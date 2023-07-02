@@ -1,19 +1,28 @@
 package org.example;
 
+import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Javalin app = Javalin.create(config -> {
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+            // Configuracion de static files
+            config.staticFiles.add(staticFileConfig -> {
+                staticFileConfig.hostedPath = "/";
+                staticFileConfig.directory = "/public";
+                staticFileConfig.location = Location.CLASSPATH;
+                staticFileConfig.precompress = false;
+                staticFileConfig.aliasCheck = null;
+            });
+        });
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        // Iniciando en el Puerto 7000
+        app.start(7002);
+
+
+        app.get("/", ctx -> ctx.result("App2"));
     }
 }
