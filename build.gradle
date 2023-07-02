@@ -29,7 +29,7 @@ dependencies {
 }
 
 shadowJar{
-    archiveBaseName.set("app1")
+    archiveBaseName.set("app2")
     archiveClassifier.set('')
     archiveVersion.set('')
 }
