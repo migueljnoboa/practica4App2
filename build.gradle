@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'org.example'
@@ -25,6 +26,12 @@ dependencies {
     implementation 'org.thymeleaf:thymeleaf:3.1.1.RELEASE'
 
     implementation("io.javalin:javalin-rendering:5.5.0")
+}
+
+shadowJar{
+    archiveBaseName.set("app1")
+    archiveClassifier.set('')
+    archiveVersion.set('')
 }
 
 test {

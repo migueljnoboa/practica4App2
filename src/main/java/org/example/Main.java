@@ -1,4 +1,4 @@
-package org.example;
+﻿package org.example;
 
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
